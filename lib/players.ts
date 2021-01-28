@@ -14,7 +14,7 @@ export const getPlayers = () => {
       id: 1883563,
       name: "Willy Flynn",
       team: "Athletic Dingbao",
-      points: 1170,
+      points: 170,
       rank: 501112,
       gw: 20,
       gw_points: 37,
