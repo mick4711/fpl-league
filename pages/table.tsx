@@ -3,7 +3,16 @@ import Head from "next/head"
 import Link from "next/link"
 import { ReactGrid, Column, Row, HeaderCell } from "@silevis/reactgrid"
 import "@silevis/reactgrid/styles.css"
-import { Player, getPlayers } from "../lib/players"
+
+interface Player {
+  id: number
+  name: string
+  team: string
+  points: number
+  rank: number
+  gw_points: number
+  gw_rank: number
+}
 
 export default function Table({ playerData }: { playerData: Player[] }) {
   const getColumns = (): Column[] => [
@@ -62,8 +71,7 @@ export default function Table({ playerData }: { playerData: Player[] }) {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  // const playerData = getPlayers()
-  const res = await fetch(`https://fpl-api-theta.vercel.app/api/league`)
+  const res = await fetch(`https://moh-fpl-api.vercel.app/api/league`)
   const playerData = await res.json()
 
   return {
