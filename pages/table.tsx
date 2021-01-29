@@ -62,7 +62,9 @@ export default function Table({ playerData }: { playerData: Player[] }) {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const playerData = getPlayers()
+  // const playerData = getPlayers()
+  const res = await fetch(`https://fpl-api-theta.vercel.app/api/league`)
+  const playerData = await res.json()
 
   return {
     props: {
