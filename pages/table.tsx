@@ -1,13 +1,20 @@
-import React, { useState } from "react"
+import { GetStaticProps } from "next"
 import Head from "next/head"
 import Link from "next/link"
 import { ReactGrid, Column, Row, HeaderCell } from "@silevis/reactgrid"
 import "@silevis/reactgrid/styles.css"
-import { Player, getPlayers } from "../lib/players"
 
-export default function Table() {
-  const [people] = useState<Player[]>(getPlayers())
+interface Player {
+  id: number
+  name: string
+  team: string
+  points: number
+  rank: number
+  gw_points: number
+  gw_rank: number
+}
 
+export default function Table({ playerData }: { playerData: Player[] }) {
   const getColumns = (): Column[] => [
     { columnId: "name", width: 150 },
     { columnId: "team", width: 150 },
@@ -29,12 +36,11 @@ export default function Table() {
     ],
   }
 
-  const getRows = (persons: Player[]): Row[] => [
+  const getRows = (players: Player[]): Row[] => [
     headerRow,
-    ...persons.map<Row>((person, idx) => ({
+    ...players.map<Row>((person, idx) => ({
       rowId: idx,
       cells: [
-        // { type: "text", text: person.id.toString() },
         { type: "text", text: person.name },
         { type: "text", text: person.team },
         { type: "number", value: person.points },
@@ -45,7 +51,7 @@ export default function Table() {
     })),
   ]
 
-  const rows = getRows(people)
+  const rows = getRows(playerData)
   const columns = getColumns()
 
   return (
@@ -62,4 +68,16 @@ export default function Table() {
       </div>
     </div>
   )
+}
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const res = await fetch(`https://moh-fpl-api.vercel.app/api/league`)
+  const playerData = await res.json()
+
+  return {
+    props: {
+      playerData,
+    },
+    revalidate: 1,
+  }
 }
