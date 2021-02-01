@@ -1,4 +1,4 @@
-import { GetStaticProps } from "next"
+import { GetServerSideProps } from "next"
 import Head from "next/head"
 import Link from "next/link"
 import { ReactGrid, Column, Row, HeaderCell } from "@silevis/reactgrid"
@@ -6,6 +6,7 @@ import "@silevis/reactgrid/styles.css"
 
 interface Player {
   id: number
+  gw: number
   name: string
   team: string
   points: number
@@ -53,6 +54,8 @@ export default function Table({ playerData }: { playerData: Player[] }) {
 
   const rows = getRows(playerData)
   const columns = getColumns()
+  const gameweek = playerData[0]["gw"]
+  const timestamp = new Date()
 
   return (
     <div>
@@ -60,17 +63,28 @@ export default function Table({ playerData }: { playerData: Player[] }) {
         <title>FPL Table</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Link href="/">Home</Link>
 
       <div className="table">
+        <p>Gameweek: {gameweek}</p>
+        <p suppressHydrationWarning={true}>
+          Time:{" "}
+          {timestamp.toLocaleString("en-IE", {
+            weekday: "short",
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+          })}
+        </p>
         <ReactGrid rows={rows} columns={columns} />
       </div>
     </div>
   )
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const res = await fetch(`https://moh-fpl-api.vercel.app/api/league`)
   const playerData = await res.json()
 
@@ -78,6 +92,5 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       playerData,
     },
-    revalidate: 1,
   }
 }
