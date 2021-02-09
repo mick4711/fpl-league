@@ -1,4 +1,4 @@
-import { GetServerSideProps } from "next"
+import { GetStaticProps } from "next"
 import Head from "next/head"
 import Link from "next/link"
 import { ReactGrid, Column, Row, HeaderCell } from "@silevis/reactgrid"
@@ -84,7 +84,7 @@ export default function Table({ playerData }: { playerData: Player[] }) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps = async (context) => {
   const res = await fetch(`https://moh-fpl-api.vercel.app/api/league`)
   const playerData = await res.json()
 
@@ -92,5 +92,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     props: {
       playerData,
     },
+    revalidate: 1,
   }
 }
