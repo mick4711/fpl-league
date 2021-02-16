@@ -24,7 +24,6 @@ export default function Table({ playerData }: { playerData: Player[] }) {
     { columnId: "rank", width: 100 },
     { columnId: "gw_points", width: 60 },
     { columnId: "gw_rank", width: 100 },
-    { columnId: "link", width: 600 },
   ]
 
   const headerRow: Row<HeaderCell> = {
@@ -36,7 +35,6 @@ export default function Table({ playerData }: { playerData: Player[] }) {
       { type: "header", text: "Rank" },
       { type: "header", text: "GW-Pts" },
       { type: "header", text: "GW-Rank" },
-      { type: "header", text: "Link" },
     ],
   }
 
@@ -51,18 +49,16 @@ export default function Table({ playerData }: { playerData: Player[] }) {
         { type: "number", value: person.rank },
         { type: "number", value: person.gw_points },
         { type: "number", value: person.gw_rank },
-        { type: "text", text: "<a href='" + person.link + "'>Link</a>" },
       ],
     })),
   ]
 
-  const getMyRows = (players: Player[]): [] => []
+  // const getMyRows = (players: Player[]): [] => []
 
   const rows = getRows(playerData)
   const columns = getColumns()
   const gameweek = playerData[0]["gw"]
   const timestamp = new Date()
-  const playerUri = playerData[0]["link"]
 
   return (
     <div>
@@ -74,9 +70,6 @@ export default function Table({ playerData }: { playerData: Player[] }) {
 
       <div className="table">
         <p>Gameweek: {gameweek}</p>
-        <p>Player link: {playerUri}</p>
-        <Link href={playerUri}>Link</Link>
-        <a href={playerUri}>Link</a>
         <p suppressHydrationWarning={true}>
           Time:{" "}
           {timestamp.toLocaleString("en-IE", {
