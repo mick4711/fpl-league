@@ -56,6 +56,8 @@ export default function Table({ playerData }: { playerData: Player[] }) {
     })),
   ]
 
+  const getMyRows = (players: Player[]): [] => []
+
   const rows = getRows(playerData)
   const columns = getColumns()
   const gameweek = playerData[0]["gw"]
@@ -87,6 +89,29 @@ export default function Table({ playerData }: { playerData: Player[] }) {
           })}
         </p>
         <ReactGrid rows={rows} columns={columns} />
+        <hr />
+        <table>
+          <tr>
+            <td>Name</td>
+            <td>Team</td>
+            <td>Points</td>
+            <td>Rank</td>
+            <td>GW Points</td>
+            <td>GW Rank</td>
+          </tr>
+          {playerData.map((player) => (
+            <tr>
+              <td>{player.name}</td>
+              <td>
+                <a href={player.link}>{player.team}</a>
+              </td>
+              <td>{player.points}</td>
+              <td>{player.rank}</td>
+              <td>{player.gw_points}</td>
+              <td>{player.gw_rank}</td>
+            </tr>
+          ))}
+        </table>
       </div>
     </div>
   )
