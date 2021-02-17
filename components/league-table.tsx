@@ -1,3 +1,5 @@
+import { useState } from "react"
+
 export interface Player {
   id: number
   gw: number
@@ -10,16 +12,40 @@ export interface Player {
   link: string
 }
 
+enum Column {
+  Points,
+  GW_Points,
+}
+
 export default function LeagueTable({ playerData }: { playerData: Player[] }) {
+  const [column, setColumn] = useState(Column.Points)
+
+  const sortTable = () => {
+    switch (column) {
+      case Column.Points:
+        playerData.sort((a, b) => {
+          return b.points - a.points
+        })
+        break
+      case Column.GW_Points:
+        playerData.sort((a, b) => {
+          return b.gw_points - a.gw_points
+        })
+        break
+    }
+  }
+
+  sortTable()
+
   return (
     <table>
       <thead>
         <tr className="shaded">
           <td>Name</td>
           <td>Team</td>
-          <td>Points</td>
+          <td onClick={() => setColumn(Column.Points)}>Points</td>
           <td>Rank</td>
-          <td>GW Points</td>
+          <td onClick={() => setColumn(Column.GW_Points)}>GW Points</td>
           <td>GW Rank</td>
         </tr>
       </thead>
@@ -28,7 +54,9 @@ export default function LeagueTable({ playerData }: { playerData: Player[] }) {
           <tr key={player.id}>
             <td>{player.name}</td>
             <td>
-              <a href={player.link}>{player.team}</a>
+              <a href={player.link} target="_blank" rel="noreferrer">
+                {player.team}
+              </a>
             </td>
             <td className="numeric">{player.points.toLocaleString()}</td>
             <td className="numeric">{player.rank.toLocaleString()}</td>
