@@ -13,14 +13,16 @@ export interface Player {
 export default function LeagueTable({ playerData }: { playerData: Player[] }) {
   return (
     <table>
-      <tr className="shaded">
-        <td>Name</td>
-        <td>Team</td>
-        <td>Points</td>
-        <td>Rank</td>
-        <td>GW Points</td>
-        <td>GW Rank</td>
-      </tr>
+      <thead>
+        <tr className="shaded">
+          <td>Name</td>
+          <td>Team</td>
+          <td>Points</td>
+          <td>Rank</td>
+          <td>GW Points</td>
+          <td>GW Rank</td>
+        </tr>
+      </thead>
       <tbody>
         {playerData.map((player) => (
           <tr key={player.id}>
