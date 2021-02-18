@@ -13,8 +13,8 @@ export interface Player {
 }
 
 enum Column {
-  Points,
-  GW_Points,
+  Points = "Points",
+  GW_Points = "GW Points",
 }
 
 export default function LeagueTable({ playerData }: { playerData: Player[] }) {
@@ -46,17 +46,23 @@ export default function LeagueTable({ playerData }: { playerData: Player[] }) {
         <tr className="shaded">
           <td>Name</td>
           <td>Team</td>
-          <td className="sort" onClick={() => {
-            setColumn(Column.Points)
-            setDoSort(true)
-          }}>
+          <td
+            className="sort"
+            onClick={() => {
+              setColumn(Column.Points)
+              setDoSort(true)
+            }}
+          >
             Points
           </td>
           <td>Rank</td>
-          <td className="sort" onClick={() => {
-            setColumn(Column.GW_Points)
-            setDoSort(true)
-          }}>
+          <td
+            className="sort"
+            onClick={() => {
+              setColumn(Column.GW_Points)
+              setDoSort(true)
+            }}
+          >
             GW Points
           </td>
           <td>GW Rank</td>
@@ -71,10 +77,14 @@ export default function LeagueTable({ playerData }: { playerData: Player[] }) {
                 {player.team}
               </a>
             </td>
-            <td className="numeric">{player.points.toLocaleString()}</td>
-            <td className="numeric">{player.rank.toLocaleString()}</td>
-            <td className="numeric">{player.gw_points.toLocaleString()}</td>
-            <td className="numeric">{player.gw_rank.toLocaleString()}</td>
+            <td className="numeric">{player.points.toLocaleString("en-IE")}</td>
+            <td className="numeric">{player.rank.toLocaleString("en-IE")}</td>
+            <td className="numeric">
+              {player.gw_points.toLocaleString("en-IE")}
+            </td>
+            <td className="numeric">
+              {player.gw_rank.toLocaleString("en-IE")}
+            </td>
           </tr>
         ))}
       </tbody>

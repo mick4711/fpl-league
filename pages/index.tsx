@@ -1,68 +1,118 @@
+import { GetStaticProps } from "next"
 import Head from "next/head"
-import Link from "next/link"
-import styles from "../styles/Home.module.css"
+import LeagueTable, { Player } from "../components/league-table"
+import styles from "../styles/Table.module.css"
 
-export default function Home() {
+export default function Table({ playerData }: { playerData: Player[] }) {
+  const gameweek = playerData[0]["gw"]
+  const timestamp = new Date()
+
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
-        <title>FPL League</title>
+        <title>FPL Table</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
         <h1 className={styles.title}>Fantasy Football customisable tables</h1>
-
-        <p className={styles.description}>
-          Go to sample <Link href="/table">table</Link>
-        </p>
-
-        <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+        <div className="table">
+          <p>Gameweek: {gameweek}</p>
+          <p suppressHydrationWarning={true}>
+            Time:{" "}
+            {timestamp.toLocaleString("en-IE", {
+              weekday: "short",
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+              hour: "numeric",
+              minute: "numeric",
+            })}
+          </p>
+          <LeagueTable playerData={playerData} />
         </div>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
     </div>
   )
 }
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const res = await fetch(`https://moh-fpl-api.vercel.app/api/league`)
+  const playerData = await res.json()
+
+  return {
+    props: {
+      playerData,
+    },
+    revalidate: 1,
+  }
+}
+
+// import Head from "next/head"
+// import Link from "next/link"
+// import styles from "../styles/Home.module.css"
+
+// export default function Home() {
+//   return (
+//     <div className={styles.container}>
+//       <Head>
+//         <title>FPL League</title>
+//         <link rel="icon" href="/favicon.ico" />
+//       </Head>
+
+//       <main className={styles.main}>
+//         <h1 className={styles.title}>Fantasy Football customisable tables</h1>
+
+//         <p className={styles.description}>
+//           Go to sample <Link href="/table">table</Link>
+//         </p>
+
+//         <p className={styles.description}>
+//           Get started by editing{" "}
+//           <code className={styles.code}>pages/index.js</code>
+//         </p>
+
+//         <div className={styles.grid}>
+//           <a href="https://nextjs.org/docs" className={styles.card}>
+//             <h3>Documentation &rarr;</h3>
+//             <p>Find in-depth information about Next.js features and API.</p>
+//           </a>
+
+//           <a href="https://nextjs.org/learn" className={styles.card}>
+//             <h3>Learn &rarr;</h3>
+//             <p>Learn about Next.js in an interactive course with quizzes!</p>
+//           </a>
+
+//           <a
+//             href="https://github.com/vercel/next.js/tree/master/examples"
+//             className={styles.card}
+//           >
+//             <h3>Examples &rarr;</h3>
+//             <p>Discover and deploy boilerplate example Next.js projects.</p>
+//           </a>
+
+//           <a
+//             href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+//             className={styles.card}
+//           >
+//             <h3>Deploy &rarr;</h3>
+//             <p>
+//               Instantly deploy your Next.js site to a public URL with Vercel.
+//             </p>
+//           </a>
+//         </div>
+//       </main>
+
+//       <footer className={styles.footer}>
+//         <a
+//           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//         >
+//           Powered by{" "}
+//           <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
+//         </a>
+//       </footer>
+//     </div>
+//   )
+// }
