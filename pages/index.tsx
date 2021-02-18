@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next"
 import Head from "next/head"
 import LeagueTable, { Player } from "../components/league-table"
-import styles from "../styles/Home.module.css"
+import styles from "../styles/Table.module.css"
 
 export default function Table({ playerData }: { playerData: Player[] }) {
   const gameweek = playerData[0]["gw"]
