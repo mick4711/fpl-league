@@ -19,6 +19,7 @@ enum Column {
 
 export default function LeagueTable({ playerData }: { playerData: Player[] }) {
   const [column, setColumn] = useState(Column.Points)
+  const [doSort, setDoSort] = useState(false)
 
   const sortTable = () => {
     switch (column) {
@@ -35,7 +36,9 @@ export default function LeagueTable({ playerData }: { playerData: Player[] }) {
     }
   }
 
-  sortTable()
+  if (doSort) {
+    sortTable()
+  }
 
   return (
     <table>
@@ -43,9 +46,19 @@ export default function LeagueTable({ playerData }: { playerData: Player[] }) {
         <tr className="shaded">
           <td>Name</td>
           <td>Team</td>
-          <td onClick={() => setColumn(Column.Points)}>Points</td>
+          <td className="sort" onClick={() => {
+            setColumn(Column.Points)
+            setDoSort(true)
+          }}>
+            Points
+          </td>
           <td>Rank</td>
-          <td onClick={() => setColumn(Column.GW_Points)}>GW Points</td>
+          <td className="sort" onClick={() => {
+            setColumn(Column.GW_Points)
+            setDoSort(true)
+          }}>
+            GW Points
+          </td>
           <td>GW Rank</td>
         </tr>
       </thead>
