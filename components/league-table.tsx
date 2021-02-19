@@ -14,37 +14,37 @@ export interface Player {
   link: string
 }
 
-enum Column {
-  Name = "Name",
-  Team = "Team",
-  Points = "Points",
-  Rank = "Rank",
-  GW_Points = "GW Points",
-  GW_Rank = "GW Rank",
+const column = {
+  name: "Name",
+  team : "Team",
+  points :"Points",
+  rank : "Rank",
+  gwPoints : "GW Points",
+  gwRank : "GW Rank",
 }
 
 export default function LeagueTable({ playerData }: { playerData: Player[] }) {
-  const [columnToSortBy, setColumnToSortBy] = useState(Column.Points)
+  const [columnToSortBy, setColumnToSortBy] = useState(column.points)
   const [sortRequired, setSortRequired] = useState(false)
 
-  const sortByColumn = (column: Column) => {
-    setColumnToSortBy(column)
+  const sortByColumn = (columnName: string) => {
+    setColumnToSortBy(columnName)
     setSortRequired(true)
   }
 
   const sortTable = () => {
     switch (columnToSortBy) {
-      case Column.Name:
+      case column.name:
         playerData.sort((a, b) => {
           return a.name.localeCompare(b.name)
         })
         break
-      case Column.Points:
+      case column.points:
         playerData.sort((a, b) => {
           return b.points - a.points
         })
         break
-      case Column.GW_Points:
+      case column.gwPoints:
         playerData.sort((a, b) => {
           return b.gw_points - a.gw_points
         })
@@ -60,12 +60,12 @@ export default function LeagueTable({ playerData }: { playerData: Player[] }) {
     <table>
       <thead>
         <tr className={styles.shaded}>
-          <TdSort title={Column.Name} onColumnClick={sortByColumn} />
-          <td>{Column.Team}</td>
-          <TdSort title={Column.Points} onColumnClick={sortByColumn} />
-          <td>{Column.Rank}</td>
-          <TdSort title={Column.GW_Points} onColumnClick={sortByColumn} />
-          <td>{Column.GW_Rank}</td>
+          <TdSort title={column.name} onColumnClick={sortByColumn} />
+          <td>{column.team}</td>
+          <TdSort title={column.points} onColumnClick={sortByColumn} />
+          <td>{column.rank}</td>
+          <TdSort title={column.gwPoints} onColumnClick={sortByColumn} />
+          <td>{column.gwRank}</td>
         </tr>
       </thead>
       <tbody>
