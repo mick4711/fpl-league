@@ -1,4 +1,6 @@
 import { useState } from "react"
+import styles from '../styles/LeagueTable.module.css'
+import TdSort from "./td-sort"
 
 export interface Player {
   id: number
@@ -13,8 +15,12 @@ export interface Player {
 }
 
 enum Column {
+  Name = "Name",
+  Team = "Team",
   Points = "Points",
+  Rank = "Rank",
   GW_Points = "GW Points",
+  GW_Rank = "GW Rank",
 }
 
 export default function LeagueTable({ playerData }: { playerData: Player[] }) {
@@ -43,29 +49,30 @@ export default function LeagueTable({ playerData }: { playerData: Player[] }) {
   return (
     <table>
       <thead>
-        <tr className="shaded">
-          <td>Name</td>
-          <td>Team</td>
+        <tr className={styles.shaded}>
+          <TdSort title={Column.Name} />
+          <td>{Column.Team}</td>
+          {/* TODO customise with a symbol and convert to component */}
           <td
-            className="sort"
+            className={styles.sort}
             onClick={() => {
               setColumn(Column.Points)
               setDoSort(true)
             }}
           >
-            Points
+            {Column.Points}
           </td>
-          <td>Rank</td>
+          <td>{Column.Rank}</td>
           <td
-            className="sort"
+            className={styles.sort}
             onClick={() => {
               setColumn(Column.GW_Points)
               setDoSort(true)
             }}
           >
-            GW Points
+            {Column.GW_Points}
           </td>
-          <td>GW Rank</td>
+          <td>{Column.GW_Rank}</td>
         </tr>
       </thead>
       <tbody>
@@ -77,12 +84,12 @@ export default function LeagueTable({ playerData }: { playerData: Player[] }) {
                 {player.team}
               </a>
             </td>
-            <td className="numeric">{player.points.toLocaleString("en-IE")}</td>
-            <td className="numeric">{player.rank.toLocaleString("en-IE")}</td>
-            <td className="numeric">
+            <td className={styles.numeric}>{player.points.toLocaleString("en-IE")}</td>
+            <td className={styles.numeric}>{player.rank.toLocaleString("en-IE")}</td>
+            <td className={styles.numeric}>
               {player.gw_points.toLocaleString("en-IE")}
             </td>
-            <td className="numeric">
+            <td className={styles.numeric}>
               {player.gw_rank.toLocaleString("en-IE")}
             </td>
           </tr>

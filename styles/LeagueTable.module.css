@@ -1,0 +1,12 @@
+.shaded {
+  background-color: lightskyblue;
+}
+
+.numeric {
+  text-align: right;
+}
+
+td.sort:hover {
+  cursor: s-resize;
+  background-color: cyan;
+}

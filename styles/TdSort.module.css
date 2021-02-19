@@ -1,0 +1,4 @@
+td.sort:hover {
+  cursor: pointer;
+  background-color: chartreuse;
+}
