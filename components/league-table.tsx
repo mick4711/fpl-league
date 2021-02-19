@@ -1,5 +1,5 @@
 import { useState } from "react"
-import styles from '../styles/LeagueTable.module.css'
+import styles from "../styles/LeagueTable.module.css"
 import TdSort from "./td-sort"
 
 export interface Player {
@@ -10,7 +10,7 @@ export interface Player {
   points: number
   rank: number
   gw_points: number
-  gw_rank: number
+  gw_rank?: number
   link: string
 }
 
@@ -24,11 +24,21 @@ enum Column {
 }
 
 export default function LeagueTable({ playerData }: { playerData: Player[] }) {
-  const [column, setColumn] = useState(Column.Points)
-  const [doSort, setDoSort] = useState(false)
+  const [columnToSortBy, setColumnToSortBy] = useState(Column.Points)
+  const [sortRequired, setSortRequired] = useState(false)
+
+  const sortByColumn = (column: Column) => {
+    setColumnToSortBy(column)
+    setSortRequired(true)
+  }
 
   const sortTable = () => {
-    switch (column) {
+    switch (columnToSortBy) {
+      case Column.Name:
+        playerData.sort((a, b) => {
+          return a.name.localeCompare(b.name)
+        })
+        break
       case Column.Points:
         playerData.sort((a, b) => {
           return b.points - a.points
@@ -42,7 +52,7 @@ export default function LeagueTable({ playerData }: { playerData: Player[] }) {
     }
   }
 
-  if (doSort) {
+  if (sortRequired) {
     sortTable()
   }
 
@@ -50,28 +60,11 @@ export default function LeagueTable({ playerData }: { playerData: Player[] }) {
     <table>
       <thead>
         <tr className={styles.shaded}>
-          <TdSort title={Column.Name} />
+          <TdSort title={Column.Name} onColumnClick={sortByColumn} />
           <td>{Column.Team}</td>
-          {/* TODO customise with a symbol and convert to component */}
-          <td
-            className={styles.sort}
-            onClick={() => {
-              setColumn(Column.Points)
-              setDoSort(true)
-            }}
-          >
-            {Column.Points}
-          </td>
+          <TdSort title={Column.Points} onColumnClick={sortByColumn} />
           <td>{Column.Rank}</td>
-          <td
-            className={styles.sort}
-            onClick={() => {
-              setColumn(Column.GW_Points)
-              setDoSort(true)
-            }}
-          >
-            {Column.GW_Points}
-          </td>
+          <TdSort title={Column.GW_Points} onColumnClick={sortByColumn} />
           <td>{Column.GW_Rank}</td>
         </tr>
       </thead>
@@ -84,13 +77,17 @@ export default function LeagueTable({ playerData }: { playerData: Player[] }) {
                 {player.team}
               </a>
             </td>
-            <td className={styles.numeric}>{player.points.toLocaleString("en-IE")}</td>
-            <td className={styles.numeric}>{player.rank.toLocaleString("en-IE")}</td>
+            <td className={styles.numeric}>
+              {player.points.toLocaleString("en-IE")}
+            </td>
+            <td className={styles.numeric}>
+              {player.rank.toLocaleString("en-IE")}
+            </td>
             <td className={styles.numeric}>
               {player.gw_points.toLocaleString("en-IE")}
             </td>
             <td className={styles.numeric}>
-              {player.gw_rank.toLocaleString("en-IE")}
+              {player.gw_rank?.toLocaleString("en-IE")}
             </td>
           </tr>
         ))}

@@ -1,7 +1,15 @@
-import styles from '../styles/TdSort.module.css'
-export default function TdSort({ title }: { title: string }) {
+import styles from "../styles/TdSort.module.css"
+export default function TdSort({ title, onColumnClick }: { title: string; onColumnClick: any }) {
   return (
-    // TODO customise with a symbol and convert to component
-    <td className={styles.sort}>{title}</td>
+    // TODO customise with a symbol and background
+    <td
+      className={styles.sort}
+      onClick={() => {
+        console.log({onColumnClick})
+        {onColumnClick(title)}
+      }}
+    >
+      {title}
+    </td>
   )
 }
