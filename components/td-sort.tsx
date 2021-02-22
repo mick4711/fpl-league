@@ -17,6 +17,7 @@ export default function TdSort({ title, onColumnClick }: Props) {
       }}
     >
       {title}
+      <img src="./arrow.webp" alt="down arrow" width="15" height="15" />
     </td>
   )
 }

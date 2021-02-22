@@ -34,11 +34,6 @@ export default function LeagueTable({ playerData }: { playerData: Player[] }) {
 
   const sortTable = () => {
     switch (columnToSortBy) {
-      case column.name:
-        playerData.sort((a, b) => {
-          return a.name.localeCompare(b.name)
-        })
-        break
       case column.points:
         playerData.sort((a, b) => {
           return b.points - a.points
@@ -60,7 +55,7 @@ export default function LeagueTable({ playerData }: { playerData: Player[] }) {
     <table>
       <thead>
         <tr className={styles.shaded}>
-          <TdSort title={column.name} onColumnClick={sortByColumn} />
+          <td>{column.name}</td>
           <td>{column.team}</td>
           <TdSort title={column.points} onColumnClick={sortByColumn} />
           <td>{column.rank}</td>
