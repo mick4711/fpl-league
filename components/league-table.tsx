@@ -1,4 +1,6 @@
 import { useState } from "react"
+import styles from "../styles/LeagueTable.module.css"
+import TdSort from "./td-sort"
 
 export interface Player {
   id: number
@@ -8,64 +10,60 @@ export interface Player {
   points: number
   rank: number
   gw_points: number
-  gw_rank: number
+  gw_rank?: number
   link: string
 }
 
-enum Column {
-  Points = "Points",
-  GW_Points = "GW Points",
+const column = {
+  name: "Name",
+  team : "Team",
+  points :"Points",
+  rank : "Rank",
+  gwPoints : "GW Points",
+  gwRank : "GW Rank",
 }
 
 export default function LeagueTable({ playerData }: { playerData: Player[] }) {
-  const [column, setColumn] = useState(Column.Points)
-  const [doSort, setDoSort] = useState(false)
+  const [columnToSortBy, setColumnToSortBy] = useState(column.points)
+  const [sortRequired, setSortRequired] = useState(false)
 
+  const sortByColumn = (columnName: string) => {
+    setColumnToSortBy(columnName)
+    setSortRequired(true)
+  }
+
+  let sortedByGwPoints = false
   const sortTable = () => {
-    switch (column) {
-      case Column.Points:
+    switch (columnToSortBy) {
+      case column.points:
         playerData.sort((a, b) => {
           return b.points - a.points
         })
+        sortedByGwPoints = false
         break
-      case Column.GW_Points:
+      case column.gwPoints:
         playerData.sort((a, b) => {
           return b.gw_points - a.gw_points
         })
+        sortedByGwPoints = true
         break
     }
   }
 
-  if (doSort) {
+  if (sortRequired) {
     sortTable()
   }
 
   return (
-    <table>
+    <table className={styles.leaguetable}>
       <thead>
-        <tr className="shaded">
-          <td>Name</td>
-          <td>Team</td>
-          <td
-            className="sort"
-            onClick={() => {
-              setColumn(Column.Points)
-              setDoSort(true)
-            }}
-          >
-            Points
-          </td>
-          <td>Rank</td>
-          <td
-            className="sort"
-            onClick={() => {
-              setColumn(Column.GW_Points)
-              setDoSort(true)
-            }}
-          >
-            GW Points
-          </td>
-          <td>GW Rank</td>
+        <tr className={styles.shaded}>
+          <td>{column.name}</td>
+          <td>{column.team}</td>
+          <TdSort title={column.points} onColumnClick={sortByColumn} sortedStyle={!sortedByGwPoints} />
+          <td>{column.rank}</td>
+          <TdSort title={column.gwPoints} onColumnClick={sortByColumn} sortedStyle={sortedByGwPoints} />
+          <td>{column.gwRank}</td>
         </tr>
       </thead>
       <tbody>
@@ -77,13 +75,17 @@ export default function LeagueTable({ playerData }: { playerData: Player[] }) {
                 {player.team}
               </a>
             </td>
-            <td className="numeric">{player.points.toLocaleString("en-IE")}</td>
-            <td className="numeric">{player.rank.toLocaleString("en-IE")}</td>
-            <td className="numeric">
+            <td className={styles.numeric}>
+              {player.points.toLocaleString("en-IE")}
+            </td>
+            <td className={styles.numeric}>
+              {player.rank.toLocaleString("en-IE")}
+            </td>
+            <td className={styles.numeric}>
               {player.gw_points.toLocaleString("en-IE")}
             </td>
-            <td className="numeric">
-              {player.gw_rank.toLocaleString("en-IE")}
+            <td className={styles.numeric}>
+              {player.gw_rank?.toLocaleString("en-IE")}
             </td>
           </tr>
         ))}

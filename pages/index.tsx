@@ -16,7 +16,7 @@ export default function Table({ playerData }: { playerData: Player[] }) {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Fantasy Football customisable tables</h1>
-        <div className="table">
+        <div className={styles.table}>
           <p>Gameweek: {gameweek}</p>
           <p suppressHydrationWarning={true}>
             Time:{" "}
@@ -36,7 +36,7 @@ export default function Table({ playerData }: { playerData: Player[] }) {
   )
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch(`https://moh-fpl-api.vercel.app/api/league`)
   const playerData = await res.json()
 
