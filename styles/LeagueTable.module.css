@@ -5,3 +5,8 @@
 .numeric {
   text-align: right;
 }
+.leaguetable {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}

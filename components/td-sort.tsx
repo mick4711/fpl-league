@@ -1,23 +1,24 @@
 import styles from "../styles/TdSort.module.css"
+import Image from "next/image"
 
 interface Props {
   title: string
   onColumnClick: (colName: string) => void
+  sortedStyle: boolean
 }
 
-export default function TdSort({ title, onColumnClick }: Props) {
+export default function TdSort({ title, onColumnClick, sortedStyle }: Props) {
+  let sortedClass= sortedStyle ? styles.sorted : ""
+
   return (
-    // TODO customise with a symbol and background
     <td
-      className={styles.sort}
+      className= {styles.sort + " " +  sortedClass}
       onClick={() => {
-        {
-          onColumnClick(title)
-        }
+        onColumnClick(title)
       }}
     >
       {title}
-      <img src="./arrow.webp" alt="down arrow" width="15" height="15" />
+      <Image src="/arrow.webp" alt="down arrow" width="15" height="15" />
     </td>
   )
 }

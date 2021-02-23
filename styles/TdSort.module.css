@@ -2,3 +2,6 @@ td.sort:hover {
   cursor: s-resize;
   background-color: lightblue;
 }
+td.sorted {
+  background-color: lightblue;
+}

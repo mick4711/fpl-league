@@ -32,17 +32,20 @@ export default function LeagueTable({ playerData }: { playerData: Player[] }) {
     setSortRequired(true)
   }
 
+  let sortedByGwPoints = false
   const sortTable = () => {
     switch (columnToSortBy) {
       case column.points:
         playerData.sort((a, b) => {
           return b.points - a.points
         })
+        sortedByGwPoints = false
         break
       case column.gwPoints:
         playerData.sort((a, b) => {
           return b.gw_points - a.gw_points
         })
+        sortedByGwPoints = true
         break
     }
   }
@@ -52,14 +55,14 @@ export default function LeagueTable({ playerData }: { playerData: Player[] }) {
   }
 
   return (
-    <table>
+    <table className={styles.leaguetable}>
       <thead>
         <tr className={styles.shaded}>
           <td>{column.name}</td>
           <td>{column.team}</td>
-          <TdSort title={column.points} onColumnClick={sortByColumn} />
+          <TdSort title={column.points} onColumnClick={sortByColumn} sortedStyle={!sortedByGwPoints} />
           <td>{column.rank}</td>
-          <TdSort title={column.gwPoints} onColumnClick={sortByColumn} />
+          <TdSort title={column.gwPoints} onColumnClick={sortByColumn} sortedStyle={sortedByGwPoints} />
           <td>{column.gwRank}</td>
         </tr>
       </thead>
