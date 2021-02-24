@@ -1,18 +1,20 @@
 import styles from "../styles/TdSort.module.css"
 import Image from "next/image"
 
-interface Props {
+export default function TdSort({
+  title,
+  onColumnClick,
+  sortedStyle,
+}: {
   title: string
   onColumnClick: (colName: string) => void
   sortedStyle: boolean
-}
-
-export default function TdSort({ title, onColumnClick, sortedStyle }: Props) {
-  let sortedClass= sortedStyle ? styles.sorted : ""
+}) {
+  let sortedClass = sortedStyle ? styles.sorted : ""
 
   return (
     <td
-      className= {styles.sort + " " +  sortedClass}
+      className={styles.sort + " " + sortedClass}
       onClick={() => {
         onColumnClick(title)
       }}

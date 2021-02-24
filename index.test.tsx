@@ -2,7 +2,7 @@ import { render } from "@testing-library/react"
 import Table from "./pages/index"
 import { Player } from "./components/league-table"
 
-let playerData: Player[] = [
+let playerMockData: Player[] = [
   {
     id: 1,
     name: "Player 1",
@@ -39,8 +39,8 @@ let playerData: Player[] = [
 ]
 
 describe("Table component", () => {
-  it("renders with main and title", () => {
-    const { getByRole, getByText } = render(<Table playerData={playerData} />)
+  it("renders with valid playerData", () => {
+    const { getByRole, getByText } = render(<Table playerData={playerMockData} />)
 
     const main = getByRole("main")
     const title = getByText("Fantasy Football customisable tables")
