@@ -34,7 +34,7 @@ describe("TdSort component", () => {
     const arrow = getByAltText("down arrow")
 
     expect(td).toBeInTheDocument()
-    expect(td.className).toEqual(expect.stringContaining("sortx"))
+    expect(td.className).toEqual(expect.stringContaining("sort"))
     expect(td.className).toEqual(expect.not.stringContaining("sort sorted"))
     expect(td.onclick).not.toBeNull()
     expect(arrow).toBeInTheDocument()
