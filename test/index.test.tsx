@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react"
+import { render } from "@testing-library/react"
 import Table from "../pages/index"
 import { validPlayerData } from "./mock-data"
 
@@ -17,7 +17,6 @@ describe("Table component", () => {
     expect(main).toBeInTheDocument()
     expect(table).toBeInTheDocument()
     expect(table.className).toEqual(expect.stringContaining("leaguetable"))
-    screen.debug()
   })
 
   it("renders with empty playerData and message", () => {
@@ -35,6 +34,5 @@ describe("Table component", () => {
     expect(main).toBeInTheDocument()
     expect(table).toBeInTheDocument()
     expect(table.className).toEqual(expect.stringContaining("leaguetable"))
-    screen.debug()
   })
 })
