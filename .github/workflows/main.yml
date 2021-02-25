@@ -31,7 +31,9 @@ jobs:
 
       # Runs test
       - name: Run test
-        run: yarn test
+        run: |
+          yarn
+          yarn test
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
