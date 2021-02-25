@@ -1,8 +1,7 @@
-import { render } from "@testing-library/react"
-import Table from "./pages/index"
-import { Player } from "./components/league-table"
+import { Player } from "../components/league-table"
 
-let playerMockData: Player[] = [
+export type { Player }
+export const validPlayerData: Player[] = [
   {
     id: 1,
     name: "Player 1",
@@ -37,15 +36,3 @@ let playerMockData: Player[] = [
     link: "https://fantasy.premierleague.com/entry/3/event/10",
   },
 ]
-
-describe("Table component", () => {
-  it("renders with valid playerData", () => {
-    const { getByRole, getByText } = render(<Table playerData={playerMockData} />)
-
-    const main = getByRole("main")
-    const title = getByText("Fantasy Football customisable tables")
-
-    expect(main).toBeInTheDocument()
-    expect(title).toBeInTheDocument()
-  })
-})
