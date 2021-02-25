@@ -4,7 +4,8 @@ import LeagueTable, { Player } from "../components/league-table"
 import styles from "../styles/Table.module.css"
 
 export default function Table({ playerData }: { playerData: Player[] }) {
-  const gameweek = playerData[0]["gw"]
+  const gameweek =
+    playerData.length > 0 ? playerData[0]["gw"] : "No data returned from server"
   const timestamp = new Date()
 
   return (
@@ -38,7 +39,10 @@ export default function Table({ playerData }: { playerData: Player[] }) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch(`https://moh-fpl-api.vercel.app/api/league`)
-  const playerData = await res.json()
+  const playerData = await res.json().catch((error) => {
+    console.log(error)
+    return []
+  })
 
   return {
     props: {

@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react"
-import TdSort from "./td-sort"
+import TdSort from "../components/td-sort"
 
 const colName = "column name"
 const sortByColumn = (columnName: string) => {}
