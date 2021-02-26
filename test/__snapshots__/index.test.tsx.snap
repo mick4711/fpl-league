@@ -1,0 +1,300 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table component renders snapshot correctly 1`] = `
+<div>
+  <main
+    className="main"
+  >
+    <h1
+      className="title"
+    >
+      Fantasy Football customisable tables
+    </h1>
+    <div
+      className="table"
+    >
+      <p>
+        Gameweek: 
+        10
+      </p>
+      <p
+        suppressHydrationWarning={true}
+      >
+        Time:
+         
+        Tue, Apr 9, 1957, 7:11 PM
+      </p>
+      <table
+        className="leaguetable"
+      >
+        <thead>
+          <tr
+            className="shaded"
+          >
+            <td>
+              Name
+            </td>
+            <td>
+              Team
+            </td>
+            <td
+              className="sort sorted"
+              onClick={[Function]}
+            >
+              Points
+              <div
+                style={
+                  Object {
+                    "boxSizing": "border-box",
+                    "display": "inline-block",
+                    "margin": 0,
+                    "maxWidth": "100%",
+                    "overflow": "hidden",
+                    "position": "relative",
+                  }
+                }
+              >
+                <div
+                  style={
+                    Object {
+                      "boxSizing": "border-box",
+                      "display": "block",
+                      "maxWidth": "100%",
+                    }
+                  }
+                >
+                  <img
+                    alt=""
+                    aria-hidden={true}
+                    role="presentation"
+                    src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMTUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
+                    style={
+                      Object {
+                        "border": "none",
+                        "display": "block",
+                        "margin": 0,
+                        "maxWidth": "100%",
+                        "padding": 0,
+                      }
+                    }
+                  />
+                </div>
+                <img
+                  alt="down arrow"
+                  decoding="async"
+                  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                  style={
+                    Object {
+                      "border": "none",
+                      "bottom": 0,
+                      "boxSizing": "border-box",
+                      "display": "block",
+                      "height": 0,
+                      "left": 0,
+                      "margin": "auto",
+                      "maxHeight": "100%",
+                      "maxWidth": "100%",
+                      "minHeight": "100%",
+                      "minWidth": "100%",
+                      "objectFit": undefined,
+                      "objectPosition": undefined,
+                      "padding": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "visibility": "hidden",
+                      "width": 0,
+                    }
+                  }
+                />
+              </div>
+            </td>
+            <td>
+              Rank
+            </td>
+            <td
+              className="sort "
+              onClick={[Function]}
+            >
+              GW Points
+              <div
+                style={
+                  Object {
+                    "boxSizing": "border-box",
+                    "display": "inline-block",
+                    "margin": 0,
+                    "maxWidth": "100%",
+                    "overflow": "hidden",
+                    "position": "relative",
+                  }
+                }
+              >
+                <div
+                  style={
+                    Object {
+                      "boxSizing": "border-box",
+                      "display": "block",
+                      "maxWidth": "100%",
+                    }
+                  }
+                >
+                  <img
+                    alt=""
+                    aria-hidden={true}
+                    role="presentation"
+                    src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMTUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
+                    style={
+                      Object {
+                        "border": "none",
+                        "display": "block",
+                        "margin": 0,
+                        "maxWidth": "100%",
+                        "padding": 0,
+                      }
+                    }
+                  />
+                </div>
+                <img
+                  alt="down arrow"
+                  decoding="async"
+                  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                  style={
+                    Object {
+                      "border": "none",
+                      "bottom": 0,
+                      "boxSizing": "border-box",
+                      "display": "block",
+                      "height": 0,
+                      "left": 0,
+                      "margin": "auto",
+                      "maxHeight": "100%",
+                      "maxWidth": "100%",
+                      "minHeight": "100%",
+                      "minWidth": "100%",
+                      "objectFit": undefined,
+                      "objectPosition": undefined,
+                      "padding": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "visibility": "hidden",
+                      "width": 0,
+                    }
+                  }
+                />
+              </div>
+            </td>
+            <td>
+              GW Rank
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              Player 1
+            </td>
+            <td>
+              <a
+                href="https://fantasy.premierleague.com/entry/1/event/10"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Team 1
+              </a>
+            </td>
+            <td
+              className="numeric"
+            >
+              100
+            </td>
+            <td
+              className="numeric"
+            >
+              11
+            </td>
+            <td
+              className="numeric"
+            >
+              25
+            </td>
+            <td
+              className="numeric"
+            >
+              33
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Player 2
+            </td>
+            <td>
+              <a
+                href="https://fantasy.premierleague.com/entry/2/event/10"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Team 2
+              </a>
+            </td>
+            <td
+              className="numeric"
+            >
+              75
+            </td>
+            <td
+              className="numeric"
+            >
+              22
+            </td>
+            <td
+              className="numeric"
+            >
+              50
+            </td>
+            <td
+              className="numeric"
+            >
+              11
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Player 3
+            </td>
+            <td>
+              <a
+                href="https://fantasy.premierleague.com/entry/3/event/10"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Team 3
+              </a>
+            </td>
+            <td
+              className="numeric"
+            >
+              50
+            </td>
+            <td
+              className="numeric"
+            >
+              33
+            </td>
+            <td
+              className="numeric"
+            >
+              30
+            </td>
+            <td
+              className="numeric"
+            >
+              22
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+`;
