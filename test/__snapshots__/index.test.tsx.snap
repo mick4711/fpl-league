@@ -22,7 +22,7 @@ exports[`Table component renders snapshot correctly 1`] = `
       >
         Time:
          
-        Tue, Apr 9, 1957, 7:11 PM
+        Tue 9 Apr 1957, 19:11
       </p>
       <table
         className="leaguetable"
