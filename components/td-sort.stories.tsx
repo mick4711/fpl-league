@@ -1,9 +1,5 @@
-// td-sort.stories.tsx
-
-import React from "react"
-
-import { Meta } from "@storybook/react"
-
+import React, { ComponentProps } from "react"
+import { Meta, Story } from "@storybook/react"
 import TdSort from "./td-sort"
 
 export default {
@@ -11,24 +7,20 @@ export default {
   component: TdSort,
 } as Meta
 
-const column = {
-  name: "Name",
-  team: "Team",
-  points: "Points",
-  rank: "Rank",
-  gwPoints: "GW Points",
-  gwRank: "GW Rank",
-}
-const sortByColumn = (columnName: string) => {}
-
-export const Primary: React.VFC<{}> = () => (
-  <table>
-    <tr>
-      <TdSort
-        title={column.points}
-        onColumnClick={sortByColumn}
-        sortedStyle={true}
-      />
-    </tr>
-  </table>
+const Template: Story<ComponentProps<typeof TdSort>> = (args) => (
+  <TdSort {...args} />
 )
+
+export const Sorted = Template.bind({})
+Sorted.args = {
+  title: "sorted",
+  onColumnClick: (colName: string) => {},
+  sortedStyle: true,
+}
+
+export const NotSorted = Template.bind({})
+NotSorted.args = {
+  title: "not sorted",
+  onColumnClick: (colName: string) => {},
+  sortedStyle: false,
+}
