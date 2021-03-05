@@ -6,6 +6,7 @@ export const parameters = {
 }
 
 // Override next/image to workaround url issue _next/image?url
+// https://github.com/vercel/next.js/issues/18393#issuecomment-750910068
 Object.defineProperty(nextImage, "default", {
   configurable: true,
   value: (props) => {

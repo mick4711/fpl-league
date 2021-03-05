@@ -6,6 +6,7 @@ module.exports = {
   ],
   addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
   webpackFinal: async (config, { configType }) => {
+    // https://github.com/storybookjs/storybook/issues/12464#issuecomment-730196791
     // get index of css rule
     const ruleCssIndex = config.module.rules.findIndex(
       (rule) => rule.test.toString() === "/\\.css$/"
