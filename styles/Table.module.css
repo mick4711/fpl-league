@@ -29,3 +29,12 @@
 .table {
   text-align: center;
 }
+
+.notes {
+  display: flex;
+  justify-content: center;
+}
+
+.bullets {
+  text-align: left;
+}
