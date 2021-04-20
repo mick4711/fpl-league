@@ -8,6 +8,8 @@ exports[`Table component renders snapshot correctly 1`] = `
     <h1
       className="title"
     >
+      Next.js
+      <br />
       Fantasy Football customisable tables
     </h1>
     <div
@@ -294,6 +296,17 @@ exports[`Table component renders snapshot correctly 1`] = `
           </tr>
         </tbody>
       </table>
+      <ul>
+        <li>
+          Next.js static rendered: data fetched and added at build time, no data fetched from front-end.
+        </li>
+        <li>
+          Incremental Static Regeneration: page is regenerated if data has updated.
+        </li>
+        <li>
+          Stale page is served while the updated page is being regenerated.
+        </li>
+      </ul>
     </div>
   </main>
 </div>

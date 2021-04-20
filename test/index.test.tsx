@@ -3,10 +3,9 @@ import renderer from "react-test-renderer"
 import Table from "../pages/index"
 import { validPlayerData } from "./mock-data"
 
-
 beforeAll(() => {
-  jest.useFakeTimers('modern')
-  jest.setSystemTime(new Date('09 Apr 1957 19:11:00 GMT').getTime())
+  jest.useFakeTimers("modern")
+  jest.setSystemTime(new Date("09 Apr 1957 19:11:00 GMT").getTime())
 })
 
 afterAll(() => {
@@ -19,7 +18,9 @@ describe("Table component", () => {
       <Table playerData={validPlayerData} />
     )
 
-    const title = getByText("Fantasy Football customisable tables")
+    const title = getByText("Fantasy Football customisable tables", {
+      exact: false,
+    })
     const main = getByRole("main")
     const table = getByRole("table")
 
@@ -33,7 +34,9 @@ describe("Table component", () => {
     const { getByRole, getByText } = render(<Table playerData={[]} />)
 
     const message = getByText("Gameweek: No data returned from server")
-    const title = getByText("Fantasy Football customisable tables")
+    const title = getByText("Fantasy Football customisable tables", {
+      exact: false,
+    })
     const main = getByRole("main")
     const table = getByRole("table")
 
@@ -43,7 +46,6 @@ describe("Table component", () => {
     expect(table).toBeInTheDocument()
     expect(table.className).toEqual(expect.stringContaining("leaguetable"))
   })
-
 
   it("renders snapshot correctly", () => {
     const component = renderer.create(<Table playerData={validPlayerData} />)
