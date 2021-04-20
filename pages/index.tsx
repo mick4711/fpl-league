@@ -16,7 +16,11 @@ export default function Table({ playerData }: { playerData: Player[] }) {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>Next.js<br/>Fantasy Football customisable tables</h1>
+        <h1 className={styles.title}>
+          Next.js
+          <br />
+          Fantasy Football customisable tables
+        </h1>
         <div className={styles.table}>
           <p>Gameweek: {gameweek}</p>
           <p suppressHydrationWarning={true}>
@@ -31,19 +35,22 @@ export default function Table({ playerData }: { playerData: Player[] }) {
             })}
           </p>
           <LeagueTable playerData={playerData} />
-          <ul>
-            <li>
-              Next.js static rendered: data fetched and added at build time, no
-              data fetched from front-end.
-            </li>
-            <li>
-              Incremental Static Regeneration: page is regenerated if data has
-              updated.
-            </li>
-            <li>
-              Stale page is served while the updated page is being regenerated.
-            </li>
-          </ul>
+          <div className={styles.notes}>
+            <ul className={styles.bullets}>
+              <li>
+                Next.js static rendered: data fetched and added at build time,
+                no data fetched from front-end.
+              </li>
+              <li>
+                Incremental Static Regeneration: page is regenerated if data has
+                updated.
+              </li>
+              <li>
+                Stale page is served while the updated page is being
+                regenerated.
+              </li>
+            </ul>
+          </div>
         </div>
       </main>
     </div>
