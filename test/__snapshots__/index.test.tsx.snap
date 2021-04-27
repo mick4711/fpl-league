@@ -311,6 +311,11 @@ exports[`Table component renders snapshot correctly 1`] = `
           <li>
             Stale page is served while the updated page is being regenerated.
           </li>
+          <li>
+            Data fetched: 
+            2021-04-27 09:26:36.715872
+             GMT
+          </li>
         </ul>
       </div>
     </div>

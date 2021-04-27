@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react"
 import renderer from "react-test-renderer"
 import Table from "../pages/index"
-import { validPlayerData } from "./mock-data"
+import { validLeagueData, emptyLeagueData } from "./mock-data"
 
 beforeAll(() => {
   jest.useFakeTimers("modern")
@@ -15,7 +15,7 @@ afterAll(() => {
 describe("Table component", () => {
   it("renders with valid playerData", () => {
     const { getByRole, getByText } = render(
-      <Table playerData={validPlayerData} />
+      <Table leagueData={validLeagueData} />
     )
 
     const title = getByText("Fantasy Football customisable tables", {
@@ -31,7 +31,7 @@ describe("Table component", () => {
   })
 
   it("renders with empty playerData and message", () => {
-    const { getByRole, getByText } = render(<Table playerData={[]} />)
+    const { getByRole, getByText } = render(<Table leagueData={emptyLeagueData} />)
 
     const message = getByText("Gameweek: No data returned from server")
     const title = getByText("Fantasy Football customisable tables", {
@@ -48,7 +48,7 @@ describe("Table component", () => {
   })
 
   it("renders snapshot correctly", () => {
-    const component = renderer.create(<Table playerData={validPlayerData} />)
+    const component = renderer.create(<Table leagueData={validLeagueData} />)
     let tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })
