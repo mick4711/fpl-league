@@ -2,10 +2,19 @@ import { GetStaticProps } from "next"
 import Head from "next/head"
 import LeagueTable, { Player } from "../components/league-table"
 import styles from "../styles/Table.module.css"
+import { emptyLeagueData } from "../test/mock-data"
 
-export default function Table({ playerData }: { playerData: Player[] }) {
+export interface League {
+  gameweek: number
+  timestamp: string
+  league: Player[]
+}
+
+export default function Table({ leagueData }: { leagueData: League }) {
   const gameweek =
-    playerData.length > 0 ? playerData[0]["gw"] : "No data returned from server"
+    leagueData.league.length > 0
+      ? leagueData.gameweek
+      : "No data returned from server"
   const timestamp = new Date()
 
   return (
@@ -34,7 +43,7 @@ export default function Table({ playerData }: { playerData: Player[] }) {
               minute: "numeric",
             })}
           </p>
-          <LeagueTable playerData={playerData} />
+          <LeagueTable playerData={leagueData.league} />
           <div className={styles.notes}>
             <ul className={styles.bullets}>
               <li>
@@ -49,6 +58,7 @@ export default function Table({ playerData }: { playerData: Player[] }) {
                 Stale page is served while the updated page is being
                 regenerated.
               </li>
+              <li>Data fetched: {leagueData.timestamp} GMT</li>
             </ul>
           </div>
         </div>
@@ -59,14 +69,14 @@ export default function Table({ playerData }: { playerData: Player[] }) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch(`https://moh-fpl-api.vercel.app/api/league`)
-  const playerData = await res.json().catch((error) => {
+  const leagueData = await res.json().catch((error) => {
     console.log(error)
-    return []
+    return emptyLeagueData
   })
 
   return {
     props: {
-      playerData,
+      leagueData,
     },
     revalidate: 1,
   }

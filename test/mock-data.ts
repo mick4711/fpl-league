@@ -1,6 +1,6 @@
 import { Player } from "../components/league-table"
+import { League } from "../pages/index"
 
-export type { Player }
 export const validPlayerData: Player[] = [
   {
     id: 1,
@@ -36,3 +36,15 @@ export const validPlayerData: Player[] = [
     link: "https://fantasy.premierleague.com/entry/3/event/10",
   },
 ]
+
+export const validLeagueData: League = {
+  gameweek: 10,
+  timestamp: "2021-04-27 09:26:36.715872",
+  league: validPlayerData,
+}
+
+export const emptyLeagueData: League = {
+  gameweek: 10,
+  timestamp: "2021-04-27 09:26:36.715872",
+  league: [],
+}
