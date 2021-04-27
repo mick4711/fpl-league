@@ -4,7 +4,7 @@ import LeagueTable, { Player } from "../components/league-table"
 import styles from "../styles/Table.module.css"
 import { emptyLeagueData } from "../test/mock-data"
 
-interface League {
+export interface League {
   gameweek: number
   timestamp: string
   league: Player[]
