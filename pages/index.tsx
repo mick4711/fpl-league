@@ -51,8 +51,8 @@ export default function Table({ leagueData }: { leagueData: League }) {
                 no data fetched from front-end.
               </li>
               <li>
-                Incremental Static Regeneration: page is regenerated if data has
-                updated.
+                Incremental Static Regeneration: page is regenerated after most
+                recent page request (at most once per second).
               </li>
               <li>
                 Stale page is served while the updated page is being
