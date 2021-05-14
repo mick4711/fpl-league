@@ -25,11 +25,9 @@ const column = {
 
 export default function LeagueTable({ playerData }: { playerData: Player[] }) {
   const [columnToSortBy, setColumnToSortBy] = useState(column.points)
-  const [sortRequired, setSortRequired] = useState(false)
 
   const sortByColumn = (columnName: string) => {
     setColumnToSortBy(columnName)
-    setSortRequired(true)
   }
 
   let sortedByGwPoints = false
@@ -49,10 +47,8 @@ export default function LeagueTable({ playerData }: { playerData: Player[] }) {
         break
     }
   }
-
-  if (sortRequired) {
-    sortTable()
-  }
+  
+  sortTable()
 
   return (
     <table className={styles.leaguetable}>

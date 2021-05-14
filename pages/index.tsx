@@ -68,7 +68,7 @@ export default function Table({ leagueData }: { leagueData: League }) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch(`https://moh-fpl-api.vercel.app/api/league`)
+  const res = await fetch(`https://europe-west2-fpl-java-313514.cloudfunctions.net/league`)
   const leagueData = await res.json().catch((error) => {
     console.log(error)
     return emptyLeagueData
