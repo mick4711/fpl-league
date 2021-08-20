@@ -68,7 +68,6 @@ exports[`Table component renders snapshot correctly 1`] = `
                   <img
                     alt=""
                     aria-hidden={true}
-                    role="presentation"
                     src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMTUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
                     style={
                       Object {
@@ -81,8 +80,40 @@ exports[`Table component renders snapshot correctly 1`] = `
                     }
                   />
                 </div>
+                <noscript>
+                  <img
+                    alt="down arrow"
+                    data-nimg={true}
+                    decoding="async"
+                    src="/_next/image?url=%2Farrow.webp&w=32&q=75"
+                    srcSet="/_next/image?url=%2Farrow.webp&w=16&q=75 1x, /_next/image?url=%2Farrow.webp&w=32&q=75 2x"
+                    style={
+                      Object {
+                        "border": "none",
+                        "bottom": 0,
+                        "boxSizing": "border-box",
+                        "display": "block",
+                        "height": 0,
+                        "left": 0,
+                        "margin": "auto",
+                        "maxHeight": "100%",
+                        "maxWidth": "100%",
+                        "minHeight": "100%",
+                        "minWidth": "100%",
+                        "objectFit": undefined,
+                        "objectPosition": undefined,
+                        "padding": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                        "width": 0,
+                      }
+                    }
+                  />
+                </noscript>
                 <img
                   alt="down arrow"
+                  data-nimg={true}
                   decoding="async"
                   src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                   style={
@@ -104,7 +135,6 @@ exports[`Table component renders snapshot correctly 1`] = `
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "visibility": "hidden",
                       "width": 0,
                     }
                   }
@@ -143,7 +173,6 @@ exports[`Table component renders snapshot correctly 1`] = `
                   <img
                     alt=""
                     aria-hidden={true}
-                    role="presentation"
                     src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMTUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
                     style={
                       Object {
@@ -156,8 +185,40 @@ exports[`Table component renders snapshot correctly 1`] = `
                     }
                   />
                 </div>
+                <noscript>
+                  <img
+                    alt="down arrow"
+                    data-nimg={true}
+                    decoding="async"
+                    src="/_next/image?url=%2Farrow.webp&w=32&q=75"
+                    srcSet="/_next/image?url=%2Farrow.webp&w=16&q=75 1x, /_next/image?url=%2Farrow.webp&w=32&q=75 2x"
+                    style={
+                      Object {
+                        "border": "none",
+                        "bottom": 0,
+                        "boxSizing": "border-box",
+                        "display": "block",
+                        "height": 0,
+                        "left": 0,
+                        "margin": "auto",
+                        "maxHeight": "100%",
+                        "maxWidth": "100%",
+                        "minHeight": "100%",
+                        "minWidth": "100%",
+                        "objectFit": undefined,
+                        "objectPosition": undefined,
+                        "padding": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                        "width": 0,
+                      }
+                    }
+                  />
+                </noscript>
                 <img
                   alt="down arrow"
+                  data-nimg={true}
                   decoding="async"
                   src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                   style={
@@ -179,7 +240,6 @@ exports[`Table component renders snapshot correctly 1`] = `
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "visibility": "hidden",
                       "width": 0,
                     }
                   }

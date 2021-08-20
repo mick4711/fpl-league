@@ -23,7 +23,7 @@ describe("TdSort component", () => {
       />,
       containerWithTableRow
     )
-    const td = getByRole("cell", { name: colName })
+    const td = getByRole("cell", { name: "column name down arrow" })
     const arrow = getByAltText("down arrow")
 
     expect(td).toBeInTheDocument()
@@ -41,7 +41,7 @@ describe("TdSort component", () => {
       />,
       containerWithTableRow
     )
-    const td = getByRole("cell", { name: colName })
+    const td = getByRole("cell", { name: "column name down arrow" })
     const arrow = getByAltText("down arrow")
 
     expect(td).toBeInTheDocument()
