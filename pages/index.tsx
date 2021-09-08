@@ -68,7 +68,7 @@ export default function Table({ leagueData }: { leagueData: League }) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch(`https://europe-west2-fpl-java-313514.cloudfunctions.net/league`)
+  const res = await fetch(`https://ezxrhqs0y0.execute-api.eu-west-1.amazonaws.com/league`)
   const leagueData = await res.json().catch((error) => {
     console.log(error)
     return emptyLeagueData
