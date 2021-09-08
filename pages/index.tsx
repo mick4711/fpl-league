@@ -10,7 +10,7 @@ export interface League {
   league: Player[]
 }
 
-export default function Table({ leagueData }: { leagueData: League }) {
+export default function Table({ leagueData, apiLeague }: { leagueData: League, apiLeague: string }) {
   const gameweek =
     leagueData.league.length > 0
       ? leagueData.gameweek
@@ -59,6 +59,7 @@ export default function Table({ leagueData }: { leagueData: League }) {
                 regenerated.
               </li>
               <li>Data fetched: {leagueData.timestamp} GMT</li>
+              <li>API: {apiLeague}</li>
             </ul>
           </div>
         </div>
@@ -68,7 +69,9 @@ export default function Table({ leagueData }: { leagueData: League }) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch(`https://ezxrhqs0y0.execute-api.eu-west-1.amazonaws.com/league`)
+  const apiLeague = process.env.REACT_APP_API_LEAGUE ? process.env.REACT_APP_API_LEAGUE : ""
+  console.log("API: " + apiLeague)
+  const res = await fetch(apiLeague)
   const leagueData = await res.json().catch((error) => {
     console.log(error)
     return emptyLeagueData
@@ -76,7 +79,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      leagueData,
+      leagueData, apiLeague
     },
     revalidate: 1,
   }

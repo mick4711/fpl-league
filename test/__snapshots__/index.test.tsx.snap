@@ -378,6 +378,9 @@ exports[`Table component renders snapshot correctly 1`] = `
             2021-04-27 09:26:36.715872
              GMT
           </li>
+          <li>
+            API: 
+          </li>
         </ul>
       </div>
     </div>
