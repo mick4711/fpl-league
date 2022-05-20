@@ -4,7 +4,7 @@ import TdSort from "./td-sort"
 
 export interface Player {
   id: number
-  gw: number
+  // gw: number
   name: string
   team: string
   points: number
