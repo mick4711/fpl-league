@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import { render, fireEvent, screen } from "@testing-library/react"
 import LeagueTable from "../components/league-table"
 import { validPlayerData } from "./mock-data"
