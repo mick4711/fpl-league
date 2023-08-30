@@ -4,7 +4,13 @@ module.exports = {
     "../stories/**/*.stories.@(js|jsx|ts|tsx)",
     "../components/**/*.stories.@(js|jsx|ts|tsx)",
   ],
-  addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
+
+  addons: [
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    "@storybook/addon-mdx-gfm"
+  ],
+
   webpackFinal: async (config, { configType }) => {
     // https://github.com/storybookjs/storybook/issues/12464#issuecomment-730196791
     // get index of css rule
@@ -29,4 +35,13 @@ module.exports = {
 
     return config
   },
+
+  framework: {
+    name: "@storybook/nextjs",
+    options: {}
+  },
+
+  docs: {
+    autodocs: true
+  }
 }
