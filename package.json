@@ -1,6 +1,6 @@
 {
   "name": "fpl-league",
-  "packageManager": "yarn@3.6.3",
+  "packageManager": "yarn@4.4.1",
   "version": "0.1.0",
   "private": true,
   "scripts": {
