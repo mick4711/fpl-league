@@ -1,5 +1,5 @@
 import React, { ComponentProps } from "react"
-import { Meta, Story } from "@storybook/react"
+import { Meta, StoryFn } from "@storybook/react"
 import LeagueTable, { Player } from "./league-table"
 
 export default {
@@ -7,7 +7,7 @@ export default {
   component: LeagueTable,
 } as Meta
 
-const Template: Story<ComponentProps<typeof LeagueTable>> = (args) => <LeagueTable {...args} />;
+const Template: StoryFn<ComponentProps<typeof LeagueTable>> = (args) => <LeagueTable {...args} />;
 
 const validPlayerData: Player[] = [
   {

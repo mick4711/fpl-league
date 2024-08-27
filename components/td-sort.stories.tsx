@@ -1,5 +1,5 @@
 import React, { ComponentProps } from "react"
-import { Meta, Story } from "@storybook/react"
+import { Meta, StoryFn } from "@storybook/react"
 import TdSort from "./td-sort"
 
 export default {
@@ -7,7 +7,7 @@ export default {
   component: TdSort,
 } as Meta
 
-const Template: Story<ComponentProps<typeof TdSort>> = (args) => (
+const Template: StoryFn<ComponentProps<typeof TdSort>> = (args) => (
   <TdSort {...args} />
 )
 
