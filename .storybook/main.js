@@ -8,7 +8,8 @@ module.exports = {
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "@storybook/addon-mdx-gfm"
+    "@storybook/addon-mdx-gfm",
+    "@chromatic-com/storybook"
   ],
 
   webpackFinal: async (config, { configType }) => {
@@ -41,7 +42,9 @@ module.exports = {
     options: {}
   },
 
-  docs: {
-    autodocs: true
+  docs: {},
+
+  typescript: {
+    reactDocgen: "react-docgen-typescript"
   }
 }
