@@ -53,7 +53,7 @@ exports[`Table component renders snapshot correctly 1`] = `
                 onError={[Function]}
                 onLoad={[Function]}
                 src="/_next/image?url=%2Farrow.webp&w=32&q=75"
-                srcSet="/_next/image?url=%2Farrow.webp&w=16&q=75 1x, /_next/image?url=%2Farrow.webp&w=32&q=75 2x"
+                srcSet="/_next/image?url=%2Farrow.webp&w=32&q=75 1x"
                 style={
                   {
                     "color": "transparent",
@@ -79,7 +79,7 @@ exports[`Table component renders snapshot correctly 1`] = `
                 onError={[Function]}
                 onLoad={[Function]}
                 src="/_next/image?url=%2Farrow.webp&w=32&q=75"
-                srcSet="/_next/image?url=%2Farrow.webp&w=16&q=75 1x, /_next/image?url=%2Farrow.webp&w=32&q=75 2x"
+                srcSet="/_next/image?url=%2Farrow.webp&w=32&q=75 1x"
                 style={
                   {
                     "color": "transparent",
